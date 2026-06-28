@@ -19,4 +19,13 @@ export class Header {
     { label: 'About', path: '/about' },
     { label: 'Contact', path: '/contact' },
   ]);
+  protected readonly menuOpen = signal(false);
+
+  protected toggleMenu(): void {
+    this.menuOpen.update((open) => !open);
+  }
+
+  protected closeMenu(): void {
+    this.menuOpen.set(false);
+  }
 }
