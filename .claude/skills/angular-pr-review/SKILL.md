@@ -13,8 +13,10 @@ structured, actionable report. This skill is the single source of truth used bot
 
 1. Determine the set of changed files:
    - **PR context (GitHub Action):** the files in the pull request diff (base...head).
-   - **Local context:** run `git diff --name-only origin/main...HEAD` (fallback `git diff --name-only HEAD`)
-     to list changed files. Only review files under `src/` with extensions `.ts`, `.html`, `.scss`, `.css`.
+   - **Local context:** diff against the repository's default branch. Detect it with
+     `git remote show origin | sed -n 's/.*HEAD branch: //p'` (this repo's is `master`), then run
+     `git diff --name-only origin/<default>...HEAD` (fallback `git diff --name-only HEAD`).
+     Only review files under `src/` with extensions `.ts`, `.html`, `.scss`, `.css`.
 2. Read each changed file (and just enough surrounding context to judge it).
 3. Apply the checklist. Report only on **changed lines** plus issues the change introduces or worsens.
    Do not flag pre-existing issues in untouched code unless they directly affect the change.
