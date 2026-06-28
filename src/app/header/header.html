@@ -1,0 +1,20 @@
+<header class="header">
+  <a class="header__brand" routerLink="/">{{ brand() }}</a>
+
+  <nav class="header__nav" aria-label="Primary">
+    <ul class="header__list">
+      @for (item of navItems(); track item.path) {
+        <li>
+          <a
+            [routerLink]="item.path"
+            routerLinkActive="header__link--active"
+            [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+            class="header__link"
+          >
+            {{ item.label }}
+          </a>
+        </li>
+      }
+    </ul>
+  </nav>
+</header>
