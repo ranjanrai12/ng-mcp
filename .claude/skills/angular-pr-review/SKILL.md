@@ -27,7 +27,8 @@ Prefer the Angular CLI MCP tools when available; otherwise use the npm scripts.
 
 - **Lint:** `npx ng lint` (or MCP `run_target` with target `lint`). Must pass.
 - **Build:** `npx ng build` (or MCP `run_target` target `build`). Must compile with no errors.
-- **Unit tests:** `npx ng test --watch=false --browsers=ChromeHeadless` if a test runner is configured.
+- **Unit tests:** `npx ng test --watch=false` (or MCP `run_target` target `test`). This project uses the
+  Vitest-based `@angular/build` test runner — do NOT pass Karma-only flags like `--browsers=ChromeHeadless`.
 
 A PR that fails lint or build is an automatic **REQUEST CHANGES**.
 

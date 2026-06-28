@@ -44,4 +44,4 @@ jobs:
             output format defined in the skill. End with an explicit APPROVE or
             REQUEST CHANGES verdict.
           claude_args: |
-            --allowedTools "Bash(git diff:*),Bash(git log:*),Bash(npx ng lint),Bash(npx ng build),Read,Grep,Glob"
+            --allowedTools "Bash(git diff:*),Bash(git log:*),Bash(npx ng lint),Bash(npx ng build),Bash(npx ng test:*),Read,Grep,Glob"
