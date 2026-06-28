@@ -20,6 +20,7 @@ export class Header {
   protected readonly navItems = signal<NavItem[]>([
     { label: 'Home', path: '/' },
     { label: 'About', path: '/about' },
+    { label: 'Docs', path: '/docs' },
     { label: 'Contact', path: '/contact' },
   ]);
   protected readonly menuOpen = signal(false);
