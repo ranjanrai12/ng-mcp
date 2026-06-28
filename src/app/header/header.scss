@@ -31,6 +31,23 @@
     width: 22px;
     height: 2px;
     background-color: #1a1a1a;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  &__toggle--open {
+    .header__toggle-bar:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .header__toggle-bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .header__toggle-bar:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
   }
 
   &__nav {
@@ -84,5 +101,11 @@
   .header__list {
     flex-direction: column;
     gap: 0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header__toggle-bar {
+    transition: none;
   }
 }

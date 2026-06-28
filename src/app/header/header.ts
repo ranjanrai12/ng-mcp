@@ -11,6 +11,9 @@ interface NavItem {
   imports: [RouterLink, RouterLinkActive],
   templateUrl: './header.html',
   styleUrl: './header.scss',
+  host: {
+    '(document:keydown.escape)': 'closeMenu()',
+  },
 })
 export class Header {
   protected readonly brand = signal('ng-mcp');
