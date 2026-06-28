@@ -21,4 +21,35 @@ describe('Header', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('toggles the menu open and closed when the button is clicked', () => {
+    const button: HTMLButtonElement =
+      fixture.nativeElement.querySelector('.header__toggle');
+
+    expect(button.getAttribute('aria-expanded')).toBe('false');
+
+    button.click();
+    fixture.detectChanges();
+    expect(button.getAttribute('aria-expanded')).toBe('true');
+
+    button.click();
+    fixture.detectChanges();
+    expect(button.getAttribute('aria-expanded')).toBe('false');
+  });
+
+  it('closes the menu when a nav link is clicked', () => {
+    const button: HTMLButtonElement =
+      fixture.nativeElement.querySelector('.header__toggle');
+
+    button.click();
+    fixture.detectChanges();
+    expect(button.getAttribute('aria-expanded')).toBe('true');
+
+    const firstLink: HTMLAnchorElement =
+      fixture.nativeElement.querySelector('.header__link');
+    firstLink.click();
+    fixture.detectChanges();
+
+    expect(button.getAttribute('aria-expanded')).toBe('false');
+  });
 });

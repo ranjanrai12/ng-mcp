@@ -1,7 +1,21 @@
 <header class="header">
   <a class="header__brand" routerLink="/">{{ brand() }}</a>
 
-  <nav class="header__nav" aria-label="Primary">
+  <button
+    type="button"
+    class="header__toggle"
+    [class.header__toggle--open]="menuOpen()"
+    [attr.aria-expanded]="menuOpen()"
+    aria-controls="primary-nav"
+    aria-label="Toggle navigation menu"
+    (click)="toggleMenu()"
+  >
+    <span class="header__toggle-bar"></span>
+    <span class="header__toggle-bar"></span>
+    <span class="header__toggle-bar"></span>
+  </button>
+
+  <nav id="primary-nav" class="header__nav" [class.header__nav--open]="menuOpen()" aria-label="Primary">
     <ul class="header__list">
       @for (item of navItems(); track item.path) {
         <li>
@@ -10,6 +24,7 @@
             routerLinkActive="header__link--active"
             [routerLinkActiveOptions]="{ exact: item.path === '/' }"
             class="header__link"
+            (click)="closeMenu()"
           >
             {{ item.label }}
           </a>
